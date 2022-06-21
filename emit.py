@@ -38,4 +38,4 @@ def emit(msg):
                 sleep(1)
 
 print(Morse.to_morse('ab'))
-emit(Morse.to_morse('ab'))
+emit(Morse.to_morse('Hello World 12'))

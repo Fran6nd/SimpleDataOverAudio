@@ -30,7 +30,7 @@ class MorseRecv:
             if MorseRecv.current_status != MorseRecv.last_status:
                 MorseRecv.status_last_change = MorseRecv.millis()
                 if MorseRecv.last_status == 0:
-                    if delay > 1000 * Morse.separator_duration * 1.5:
+                    if delay > 1000 * Morse.separator_duration * 1.5 and MorseRecv.output != '':
                         MorseRecv.output += '//'
                     elif delay > 1000 * Morse.separator_duration:
                         MorseRecv.output += '/'
@@ -75,7 +75,9 @@ if __name__ == '__main__':
     t.start()
     while True:
         stdscr.clear()
-        stdscr.addstr(0, 0, MorseRecv.output + '\n' +  Morse.to_text(MorseRecv.output) + '\n' +  '|' * int(MorseRecv.volume_norm) + '\n' + ' ' * (MorseRecv.squelch-1) + '^')
+        stdscr.addstr( 'Audio Morse Receiver by Fran6\n')
+        stdscr.addstr( 'Press \'q\' to exit.\n')
+        stdscr.addstr( 'Morse received: ' + MorseRecv.output + '\nText received: ' +   Morse.to_text(MorseRecv.output) + '\n' +  '|' * int(MorseRecv.volume_norm) + '\n' + ' ' * (MorseRecv.squelch-1) + '^')
         c = stdscr.getch()
         if c == ord('q'):
             break  # Exit the while loop
