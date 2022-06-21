@@ -15,12 +15,13 @@ class MorseRecv:
     status_last_change = millis()
     current_status = 0
     output = ''
+    volume_norm = 0
 
     def print_sound(indata, outdata, frames, time, status):
         if MorseRecv.running:
-            volume_norm = np.linalg.norm(indata)*10
+            MorseRecv.volume_norm = np.linalg.norm(indata)*10
             delay = MorseRecv.millis() - MorseRecv.status_last_change
-            if volume_norm > 5:
+            if MorseRecv.volume_norm > 5:
                 MorseRecv.current_status = 1
             else:
                 MorseRecv.current_status = 0
@@ -55,7 +56,7 @@ class MorseRecv:
             #input()
             while(MorseRecv.running):
                 time.sleep(1)
-                pass
+                print("|" * int(MorseRecv.volume_norm))
         return MorseRecv.output
 
 if __name__ == '__main__':
