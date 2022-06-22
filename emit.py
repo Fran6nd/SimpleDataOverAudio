@@ -2,6 +2,7 @@ from time import sleep
 import numpy as np
 import simpleaudio as sa
 from morse import Morse
+import sys
 
 def sound(x,z):
     frequency = x # Our played note will be 440 Hz
@@ -37,5 +38,8 @@ def emit(msg):
                 sound(300,Morse.dot_duration)
                 sleep(1)
 
-print(Morse.to_morse('ab'))
-emit(Morse.to_morse('Hello World 12'))
+if __name__ == '__main__':
+    if(len(sys.argv) == 2):
+        print('Sending: ' + sys.argv[1])
+        print('which means: ' + Morse.to_morse(sys.argv[1]))
+        emit(Morse.to_morse(sys.argv[1]))

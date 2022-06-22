@@ -11,4 +11,5 @@ deactivate
 * Activate the virtualenv: `source venv/bin/activate`
 * Run the receiver: `python recv.py`
 * Exit the receiver: press `q`
+* Send some text: `python emit.py "this is my text"`
 * Exit the virtualenv: `deactivate`
