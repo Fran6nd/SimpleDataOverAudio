@@ -3,7 +3,11 @@ Send data and receive it through speaker and microphone.
 
 # Setup:
 
+You must have git installed and python3.
+
 ```
+git clone https://github.com/Fran6nd/SimpleDataOverAudio.git
+cd SimpleDataOverAudio
 python3 -m pip install virtualenv
 python3 -m virtualenv venv
 source venv/bin/activate
