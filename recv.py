@@ -38,7 +38,7 @@ class MorseRecv:
                 elif MorseRecv.last_status == 1:
                     if delay > Morse.dot_duration * 1000 * 1.5:
                         MorseRecv.output += Morse.dash
-                    else:
+                    elif delay>Morse.dot_duration*1000:
                         MorseRecv.output += Morse.dot
 
             MorseRecv.last_status = MorseRecv.current_status
