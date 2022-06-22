@@ -1,3 +1,6 @@
+# A simple software to send data through audio using Morse (only, for now)
+Send data and receive it through speaker and microphone.
+
 # Setup:
 
 ```
