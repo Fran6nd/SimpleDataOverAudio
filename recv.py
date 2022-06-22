@@ -3,7 +3,6 @@
 import sounddevice as sd
 import numpy as np
 import time
-import threading
 
 from morse import Morse
 
@@ -19,7 +18,7 @@ class MorseRecv:
     volume_norm = 0
     squelch = 5
 
-    def print_sound(indata, outdata, frames, time, status):
+    def read_audio_input(indata, outdata, frames, time, status):
         if MorseRecv.running:
             MorseRecv.volume_norm = np.linalg.norm(indata)*10
             delay = MorseRecv.millis() - MorseRecv.status_last_change
@@ -60,7 +59,7 @@ class MorseRecv:
         stdscr.nodelay(1)
 
         MorseRecv.running = True
-        with sd.Stream(callback=MorseRecv.print_sound):
+        with sd.Stream(callback=MorseRecv.read_audio_input):
             while MorseRecv.running:
                 stdscr.clear()
                 stdscr.addstr( 'Audio Morse Receiver by Fran6\n')
